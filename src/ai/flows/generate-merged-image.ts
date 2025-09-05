@@ -36,34 +36,26 @@ export async function generateMergedImage(
   return generateMergedImageFlow(input);
 }
 
-const generateMergedImagePrompt = ai.definePrompt({
-  name: 'generateMergedImagePrompt',
-  input: {schema: GenerateMergedImageInputSchema},
-  output: {schema: GenerateMergedImageOutputSchema},
-  prompt: [
-    {
-      media: {url: '{{personImageDataUri}}'},
-    },
-    {
-      text: 'generate an image of this person wearing the clothing in the second image',
-    },
-    {
-      media: {url: '{{clothingImageDataUri}}'},
-    },
-  ],
-  config: {
-    responseModalities: ['TEXT', 'IMAGE'], // MUST provide both TEXT and IMAGE, IMAGE only won't work
-  },
-});
-
 const generateMergedImageFlow = ai.defineFlow(
   {
     name: 'generateMergedImageFlow',
     inputSchema: GenerateMergedImageInputSchema,
     outputSchema: GenerateMergedImageOutputSchema,
   },
-  async input => {
-    const {media} = await ai.generate(generateMergedImagePrompt, input);
+  async (input) => {
+    const {media} = await ai.generate({
+      model: 'googleai/gemini-2.5-flash-image-preview',
+      prompt: [
+        {media: {url: input.personImageDataUri}},
+        {
+          text: 'generate an image of this person wearing the clothing in the second image',
+        },
+        {media: {url: input.clothingImageDataUri}},
+      ],
+      config: {
+        responseModalities: ['TEXT', 'IMAGE'],
+      },
+    });
     return {mergedImageDataUri: media.url!};
   }
 );
