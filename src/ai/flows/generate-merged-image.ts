@@ -48,7 +48,15 @@ const generateMergedImageFlow = ai.defineFlow(
       prompt: [
         {media: {url: input.personImageDataUri}},
         {
-          text: 'generate an image of this person wearing the clothing in the second image',
+          text: `You are an expert fashion designer. Your task is to generate a realistic image of the person from the first image wearing the clothing item from the second image. 
+          
+          Instructions:
+          1.  Analyze the person in the first image, paying attention to their pose, body shape, and lighting.
+          2.  Analyze the clothing item in the second image.
+          3.  Create a new image where the person is realistically wearing the clothing. The final image should be photorealistic and high quality.
+          4.  Ensure the clothing fits the person's body naturally.
+          5.  Maintain the original background and lighting from the person's photo as much as possible.
+          6.  The output should only be the final generated image. Do not include any text.`,
         },
         {media: {url: input.clothingImageDataUri}},
       ],
