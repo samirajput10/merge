@@ -48,15 +48,35 @@ const generateMergedImageFlow = ai.defineFlow(
       prompt: [
         {media: {url: input.personImageDataUri}},
         {
-          text: `You are an expert fashion designer. Your task is to generate a realistic image of the person from the first image wearing the clothing item from the second image. 
-          
-          Instructions:
-          1.  Analyze the person in the first image, paying attention to their pose, body shape, and lighting.
-          2.  Analyze the clothing item in the second image.
-          3.  Create a new image where the person is realistically wearing the clothing. The final image should be photorealistic and high quality.
-          4.  Ensure the clothing fits the person's body naturally.
-          5.  Maintain the original background and lighting from the person's photo as much as possible.
-          6.  The output should only be the final generated image. Do not include any text.`,
+          text: `You are a world-class digital artist and fashion retoucher. Your mission is to flawlessly composite a clothing item onto a person from two separate images.
+
+**Your Inputs:**
+- Image 1: A photograph of a person.
+- Image 2: A photograph of an item of clothing.
+
+**Your Goal:**
+Create a single, photorealistic output image that shows the person from Image 1 wearing the clothing from Image 2. The result must be seamless, believable, and high-quality.
+
+**Step-by-Step Instructions:**
+
+1.  **Analyze the Person (Image 1):**
+    *   **Pose & Body Shape:** Carefully identify the person's posture, body contours, and limb positions.
+    *   **Lighting:** Determine the direction, softness, and color of the primary light source. Note any highlights and core shadows on the person.
+    *   **Environment:** Observe the background. The final composite must retain this original background.
+
+2.  **Analyze the Clothing (Image 2):**
+    *   **Fabric & Texture:** Identify the material of the clothing (e.g., cotton, silk, denim) and its texture.
+    *   **Fit & Style:** Understand the cut and intended fit of the garment.
+
+3.  **Perform the Digital Composite:**
+    *   **Placement & Wrapping:** "Drape" the clothing onto the person's body. The garment must realistically wrap around their form, following their curves and pose.
+    *   **Natural Folds & Creases:** Generate realistic wrinkles, folds, and creases in the fabric that correspond logically to the person's pose.
+    *   **Lighting & Shadow Integration:** This is critical. Replicate the exact lighting from Image 1 onto the clothing. The shadows and highlights on the garment must match the person's lighting perfectly to make it look like it's in the same environment. Cast subtle shadows from the clothing onto the person where appropriate.
+    *   **Maintain Background:** The background from the original person photograph (Image 1) must be preserved perfectly.
+
+**Strict Output Requirements:**
+- **Image Only:** Your output MUST be the final generated image and nothing else.
+- **No Text:** Do not include any text, descriptions, or commentary in your response.`,
         },
         {media: {url: input.clothingImageDataUri}},
       ],
