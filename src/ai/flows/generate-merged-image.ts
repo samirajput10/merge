@@ -74,9 +74,11 @@ Create a single, photorealistic output image that shows the person from the "Per
 2.  **Analyze the Clothing Image:**
     *   **Fabric & Texture:** Identify the material of the clothing (e.g., cotton, silk, denim) and its texture.
     *   **Fit & Style:** Understand the cut and intended fit of the garment.
+    *   **Outfit Analysis:** Determine if the clothing item is a single piece (like a shirt or pants) or a full outfit (like a dress or a complete suit).
 
 3.  **Perform the Digital Composite:**
     *   **Placement & Wrapping:** "Drape" the clothing onto the person's body. The garment must realistically wrap around their form, following their curves and pose.
+    *   **Outfit Replacement Logic:** If the Clothing Image shows a complete outfit (e.g., a dress), you MUST replace the person's entire current attire with the new outfit. If it's a single item (e.g., a jacket), place it over their existing clothes where appropriate.
     *   **Natural Folds & Creases:** Generate realistic wrinkles, folds, and creases in the fabric that correspond logically to the person's pose.
     *   **Lighting & Shadow Integration:** This is critical. Replicate the exact lighting from the Person Image onto the clothing. The shadows and highlights on the garment must match the person's lighting perfectly to make it look like it's in the same environment. Cast subtle shadows from the clothing onto the person where appropriate.
     *   **Maintain Background:** The background from the original Person Image must be preserved perfectly.
