@@ -16,7 +16,10 @@ export async function mergeImagesAction(input: GenerateMergedImageInput): Promis
     return { error: 'The AI failed to return an image. Please try again.' };
   } catch (e) {
     console.error(e);
-    // Return a user-friendly error message
+    // Return a more specific error message for debugging
+    if (e instanceof Error) {
+        return { error: `AI Error: ${e.message}` };
+    }
     return { error: 'An unexpected error occurred while generating the image. Please try again later.' };
   }
 }
